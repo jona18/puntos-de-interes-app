@@ -25,9 +25,23 @@ $(function(){
         "<b>Descripción: </b>" + descripcion + "<br>" +
         "<b>Dirección: </b>" + direccion + "<br>" +
         "<b>Teléfono: </b>" + telefono + "<br>" +
-        "<b>(X, Y): </b>" + coordenadasInput + "<br>" +
+        "<b>(Y, X): </b>" + coordenadasInput + "<br>" +
         "<b>Categoría: </b>" + categoria
       )
       .openPopup();
+  });
+
+  map.on('click', function(e){
+    var y = e.latlng.lat;
+    var x = e.latlng.lng;
+    var inputCoordenadas = $('#inputCoordenadas');
+
+    inputCoordenadas.val(y + ',' + x);
+    inputCoordenadas.focus();
+    inputCoordenadas.popover({animation: true, content: 'Coordenadas copiadas.', trigger: 'focus'});
+    inputCoordenadas.popover('show');
+    setTimeout(function(){
+      inputCoordenadas.popover('hide');
+    }, 2000);
   });
 });
