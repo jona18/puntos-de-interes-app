@@ -9,26 +9,26 @@ $(function(){
 	accessToken: 'pk.eyJ1Ijoiam9uYXJvZHJpZ3VleiIsImEiOiJjazFvOXhsa3QwZm90M2pwaGFtY2pwb2d4In0.p9yl1DskBoxSTygzcgg7Gg'
   }).addTo(map);
 
+  var myLayer;
+
+  getPuntos();
+
   var form = $('#formAgregar');  
   form.on('submit', function(e){
     e.preventDefault();
 
-    var descripcion = $('#inputNombre').val();
-    var direccion = $('#inputDireccion').val();
-    var telefono = $('#inputTelefono').val();
-    var coordenadasInput = $('#inputCoordenadas').val();
-    var coordenadas = coordenadasInput.split(',');
-    var categoria = $('#inputCategoria').val();
+    var formData = form.serialize();
 
-    var point = L.marker(coordenadas).addTo(map)
-      .bindPopup(
-        "<b>Descripción: </b>" + descripcion + "<br>" +
-        "<b>Dirección: </b>" + direccion + "<br>" +
-        "<b>Teléfono: </b>" + telefono + "<br>" +
-        "<b>(Y, X): </b>" + coordenadasInput + "<br>" +
-        "<b>Categoría: </b>" + categoria
-      )
-      .openPopup();
+    $.ajax({
+      type: 'POST',
+      url: '/createPuntos',
+      data: formData,
+      datatype: 'json',
+      success: function(data){
+        updateMap(data);
+        abrirPopup(myLayer);
+      }
+    });
   });
 
   map.on('click', function(e){
@@ -44,4 +44,33 @@ $(function(){
       inputCoordenadas.popover('hide');
     }, 2000);
   });
+
+  function getPuntos(){
+    $.ajax({
+      type: 'GET',
+      url: '/getPuntos',
+      dataType: 'json',
+      success: function(data){
+        updateMap(data);
+      }
+    });
+  }
+
+  function onEachFeature(feature, layer) {
+    if (feature.properties && feature.properties.popupContent) {
+      layer.bindPopup(feature.properties.popupContent);
+    }
+  }
+
+  function updateMap(data){
+    if(myLayer) {
+      myLayer.remove();
+    }
+    myLayer = L.geoJSON(data, {onEachFeature: onEachFeature}).addTo(map);
+  }
+
+  function abrirPopup(layer){
+    var ultimoMarcador = Object.keys(layer._layers)[Object.keys(layer._layers).length - 1]
+    layer._layers[ultimoMarcador].openPopup();
+  }
 });
