@@ -1,0 +1,32 @@
+html, body, #map {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
+#map {
+  z-index: 0;
+  cursor: crosshair;
+}
+
+.leaflet-pane {
+  z-index: 0;
+}
+
+#formulario {
+  position: fixed;
+  top: 15px;
+  left: 60px;
+  background-color: rgb(175, 175, 175);
+  z-index: 1;
+  min-width: 464px;
+}
+
+label {
+  width: 20% !important;
+}
+
+input, select {
+  width: 76% !important;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Puntos de interés App</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" />
+  <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+  <div id="map">
+
+  </div>
+  <div id="formulario" class="border border-secondary rounded-lg w-25 pt-3 pl-3 pb-3">
+    <form id="formAgregar" action="/" method="POST">
+      <div class="form-group w-100">
+        <label for="inputNombre" class="col-form-label font-weight-bold">Nombre</label>
+        <input type="text" class="form-control d-inline-block" id="inputNombre" name="nombre" placeholder="ej: AEROTERRA S.A.">
+      </div>
+      <div class="form-group w-100">
+        <label for="inputDireccion" class="col-form-label font-weight-bold">Dirección</label>
+        <input type="text" class="form-control d-inline-block" id="inputDireccion" name="direccion" placeholder="ej: Av. E. Madero 1020">
+      </div>
+      <div class="form-group w-100">
+        <label for="inputTelefono" class="col-form-label font-weight-bold">Teléfono</label>
+        <input type="text" class="form-control d-inline-block" id="inputTelefono" name="telefono" placeholder="ej: 54 9 11 5272 0900">
+      </div>
+      <div class="form-group w-100">
+        <label for="inputCategoria" class="col-form-label font-weight-bold">Categoría</label>
+        <select class="custom-select" id="inputCategoria" name="categoria">
+            <option selected disabled value="">Seleccionar</option>
+            <option value="Comercial">Comercial</option>
+            <option value="Residencial">Residencial</option>
+            <option value="Mixta">Mixta</option>
+          </select>
+      </div>
+      <div class="form-group w-100">
+        <label for="inputCoordenadas" class="col-form-label font-weight-bold">Coord.</label>
+        <input type="text" class="form-control d-inline-block" id="inputCoordenadas" name="coordenadas" placeholder="ej: -34.595986, -58.3724715">
+      </div>
+      <div class="text-center pr-3">
+        <button class="btn btn-secondary" id="botonAgregar">Agregar</button>
+      </div>
+    </form>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
+  <script src="/main.js"></script>
+</body>
+</html>

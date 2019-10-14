@@ -1,0 +1,23 @@
+{
+  "name": "puntos-de-interes-app",
+  "version": "1.0.0",
+  "description": "App web para marcar puntos de interés en un mapa.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jona18/puntos-de-interes-app.git"
+  },
+  "author": "Jonathan Rodriguez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jona18/puntos-de-interes-app/issues"
+  },
+  "homepage": "https://github.com/jona18/puntos-de-interes-app#readme",
+  "dependencies": {
+    "ejs": "^2.7.1",
+    "express": "^4.17.1"
+  }
+}
