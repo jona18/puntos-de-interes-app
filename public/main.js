@@ -31,6 +31,9 @@ $(function(){
     });
   });
 
+  map.on('popupopen', function(e){
+    $('.botonBorrar').on('click', borrarPunto);
+  });
   map.on('click', function(e){
     var y = e.latlng.lat;
     var x = e.latlng.lng;
@@ -72,5 +75,18 @@ $(function(){
   function abrirPopup(layer){
     var ultimoMarcador = Object.keys(layer._layers)[Object.keys(layer._layers).length - 1]
     layer._layers[ultimoMarcador].openPopup();
+  }
+
+  function borrarPunto(e){
+    var id = "id=" + $(e.currentTarget).attr('id').replace('punto', '');
+
+    $.ajax({
+      type: 'DELETE',
+      url: '/deletePuntos',
+      data: id,
+      success: function(data){
+        updateMap(data);
+      }
+    });
   }
 });
