@@ -1,4 +1,59 @@
 {
   "type": "FeatureCollection",
-  "features": []
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "nombre": "AEROTERRA S.A.",
+        "direccion": "Av. Eduardo Madero 1020",
+        "telefono": " 54 9 11 5272 0900",
+        "categoria": "Residencial",
+        "id": 1,
+        "popupContent": "<b>Descripción: </b>AEROTERRA S.A.<br><b>Dirección: </b>Av. Eduardo Madero 1020<br><b>Teléfono: </b> 54 9 11 5272 0900<br><b>(Y, X): </b>-34.595986,-58.3724715<br><b>Categoría: </b>Residencial<br><button id='punto1' class='btn btn-danger btn-sm mt-1 botonBorrar'>Borrar</button>"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.3724715,
+          -34.595986
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nombre": "Obelisco",
+        "direccion": "Av. 9 de Julio",
+        "telefono": "",
+        "categoria": "Residencial",
+        "id": 2,
+        "popupContent": "<b>Descripción: </b>Obelisco<br><b>Dirección: </b>Av. 9 de Julio<br><b>Teléfono: </b><br><b>(Y, X): </b>-34.6141852,-58.3837054<br><b>Categoría: </b>Residencial<br><button id='punto2' class='btn btn-danger btn-sm mt-1 botonBorrar'>Borrar</button>"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.3837054,
+          -34.6141852
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nombre": "Abasto Shopping",
+        "direccion": "Av. Corrientes 3247",
+        "telefono": "011 4959 3400",
+        "categoria": "Comercial",
+        "id": 3,
+        "popupContent": "<b>Descripción: </b>Abasto Shopping<br><b>Dirección: </b>Av. Corrientes 3247<br><b>Teléfono: </b>011 4959 3400<br><b>(Y, X): </b>-34.6265201,-58.437595<br><b>Categoría: </b>Comercial<br><button id='punto3' class='btn btn-danger btn-sm mt-1 botonBorrar'>Borrar</button>"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.437595,
+          -34.6265201
+        ]
+      }
+    }
+  ]
 }

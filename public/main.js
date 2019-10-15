@@ -10,6 +10,7 @@ $(function(){
   }).addTo(map);
 
   var myLayer;
+  var popOverTimeOut;
 
   getPuntos();
 
@@ -34,7 +35,6 @@ $(function(){
         success: function(data){
           updateMap(data);
           abrirPopup(myLayer);
-          console.log(myLayer);
         }
       });
     }
@@ -50,11 +50,15 @@ $(function(){
 
     inputCoordenadas.val(y + ',' + x);
     inputCoordenadas.focus();
+    inputCoordenadas.popover('dispose');
     inputCoordenadas.popover({animation: true, content: 'Coordenadas copiadas.', trigger: 'focus'});
     inputCoordenadas.popover('show');
-    setTimeout(function(){
-      inputCoordenadas.popover('hide');
-    }, 2000);
+    clearTimeout(popOverTimeOut);
+    hideCoordenadasPopover();
+  });
+
+  $('#inputCoordenadas').on('click', function(){
+    $('#inputCoordenadas').popover('dispose');
   });
 
   function getPuntos(){
@@ -71,6 +75,30 @@ $(function(){
   function onEachFeature(feature, layer) {
     if (feature.properties && feature.properties.popupContent) {
       layer.bindPopup(feature.properties.popupContent);
+    }
+    if(feature.properties.categoria === 'Comercial'){
+      var markerIcon = L.icon({
+        iconUrl: 'marker-icon-green.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowUrl: 'marker-shadow.png',
+        shadowSize: [41, 41],
+        shadowAnchor: [12, 41]
+      });
+      layer.setIcon(markerIcon);
+    }
+    if(feature.properties.categoria === 'Residencial'){
+      var markerIcon = L.icon({
+        iconUrl: 'marker-icon-red.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowUrl: 'marker-shadow.png',
+        shadowSize: [41, 41],
+        shadowAnchor: [12, 41]
+      });
+      layer.setIcon(markerIcon);
     }
   }
 
@@ -131,14 +159,17 @@ $(function(){
 
   function validarTelefono(text){
     var inputTelefono = $('#inputTelefono');
-    if(isNaN(text) || text.replace(/\s+/g, '').length === 0){
+    var numero = text.replace(/\s+/g, '');
+    if(isNaN(numero) || text.length > 30){
       inputTelefono.focus();
-      inputTelefono.popover({animation: true, content: 'Debe llenar este campo correctamente. Solo numeros y un maximo de 20 carateres.', trigger: 'focus'});
+      inputTelefono.popover({animation: true, content: 'Debe llenar este campo correctamente. Solo numeros y un maximo de 20 carateres. Campo no obligatorio.', trigger: 'focus'});
       inputTelefono.popover('show');
       setTimeout(function(){
         inputTelefono.popover('hide');
       }, 2000);
       return false;
+    } else if(text === ''){
+      return true;
     } else {
       return true;
     }
@@ -164,11 +195,12 @@ $(function(){
     var inputCoordenadas = $('#inputCoordenadas');
     if(!/^[-]?([1-8]?\d(\.\d+)?|90(\.0+)?),\s*[-]?(180(\.0+)?|((1[0-7]\d)|([1-9]?\d))(\.\d+)?)$/.test(text)){
       inputCoordenadas.focus();
+      inputCoordenadas.popover('dispose');
       inputCoordenadas.popover({animation: true, content: 'Debe llenar este campo correctamente.', trigger: 'focus'});
       inputCoordenadas.popover('show');
-      setTimeout(function(){
-        inputCoordenadas.popover('hide');
-      }, 2000);
+      clearTimeout(popOverTimeOut);
+      hideCoordenadasPopover();
+      
       return false;
     } else {
       return true;
@@ -192,5 +224,11 @@ $(function(){
       return false;
     }
     return true;
+  }
+
+  function hideCoordenadasPopover(){
+    popOverTimeOut = setTimeout(function(){
+      $('#inputCoordenadas').popover('hide');
+    }, 3000);
   }
 });
