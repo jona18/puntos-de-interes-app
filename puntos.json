@@ -1,23 +1,4 @@
 {
   "type": "FeatureCollection",
-  "features": [
-    {
-      "type": "Feature",
-      "properties": {
-        "nombre": "SDAADSSDA",
-        "direccion": "ASDASDADS",
-        "telefono": "232323232",
-        "categoria": "Residencial",
-        "id": 1,
-        "popupContent": "<b>Descripción: </b>SDAADSSDA<br><b>Dirección: </b>ASDASDADS<br><b>Teléfono: </b>232323232<br><b>(Y, X): </b>-34.642247047768535,-58.44245910644532<br><b>Categoría: </b>Residencial<br><button id='punto1' class='btn btn-danger btn-sm mt-1 botonBorrar'>Borrar</button>"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -58.44245910644532,
-          -34.642247047768535
-        ]
-      }
-    }
-  ]
+  "features": []
 }
