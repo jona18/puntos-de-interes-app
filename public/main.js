@@ -35,6 +35,7 @@ $(function(){
         success: function(data){
           updateMap(data);
           abrirPopup(myLayer);
+          vaciarInputs();
         }
       });
     }
@@ -230,5 +231,13 @@ $(function(){
     popOverTimeOut = setTimeout(function(){
       $('#inputCoordenadas').popover('hide');
     }, 3000);
+  }
+
+  function vaciarInputs(){
+    $('#inputNombre').val('');
+    $('#inputDireccion').val('');
+    $('#inputTelefono').val('');
+    $('#inputCategoria').val('');
+    $('#inputCoordenadas').val('');
   }
 });
