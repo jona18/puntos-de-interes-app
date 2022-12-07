@@ -19,6 +19,6 @@
   "homepage": "https://github.com/jona18/puntos-de-interes-app#readme",
   "dependencies": {
     "ejs": "^2.7.1",
-    "express": "^4.17.1"
+    "express": "^4.18.2"
   }
 }
